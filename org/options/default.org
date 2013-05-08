@@ -9,5 +9,4 @@
 #+LINK_UP:   
 #+LINK_HOME: 
 #+LATEX_CLASS:reportForm
-#+LATEX_HEADER:\usepackage{strike}
 #+LATEX_HEADER:\setcounter{section}{-1}

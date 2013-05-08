@@ -58,6 +58,7 @@ dvipdfmx $filename
 #+end_src
 ** emacsの設定
 .emacs.d/init.elに以下の行を追加する．
+org-latex-to-pdf-processには作成したscriptのパスを指定する．
 #+begin_src emacs-lisp
 (defun org-mode-hook()
  (when (require 'org-latex nil t)
