@@ -60,20 +60,15 @@ dvipdfmx $filename
 .emacs.d/init.elに以下の行を追加する．
 org-latex-to-pdf-processには作成したscriptのパスを指定する．
 #+begin_src emacs-lisp
-(defun org-mode-hook()
- (when (require 'org-latex nil t)
-    (setq org-latex-to-pdf-process '("sh ~/Program/script/shell_script/typeset4org.sh %f")) 
-    (add-to-list 'org-export-latex-classes
-		 '("reportForm" 
-		   "\\documentclass[fleqn, 12pt]{extarticle}
-                    \\usepackage{reportForm}"
-		   ("\\section{%s}" . "\\section*{%s}")
-		   ("\\subsection{%s}" . "\\subsection*{%s}")
-		   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		   ))
-))
-
-(add-hook 'org-mode-hook 'org-mode-hook)
+(require 'org)
+(require 'ox-latex)
+(setq org-latex-pdf-process '("sh ~/Program/script/shell_script/typeset4org.sh %f")) 
+(add-to-list 'org-latex-classes
+          '("reportForm"
+            "\\documentclass[fleqn, 12pt]{extarticle}\\usepackage{reportForm}"
+            ("\\section{%s}" . "\\section*{%s}")
+            ("\\subsection{%s}" . "\\subsection*{%s}")
+            ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 #+end_src
 ** サンプルファイルの設定
 orgディレクトリ以下を記録書ディレクトリ(各自が記録書を管理しているディレクトリ)にコピーする．
